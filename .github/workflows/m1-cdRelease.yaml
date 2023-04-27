@@ -29,7 +29,7 @@ jobs:
     steps:
 
       # cdBuild
-      - uses: ./.github/workflows/cdBuild.yaml@main
+      - uses: ./.github/workflows/cdBuild.yaml
 
       # cdRelease
       - name: cdRelease
