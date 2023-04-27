@@ -22,8 +22,6 @@ jobs:
 
   Build:
     uses: ./.github/workflows/cdBuild.yaml
-    with:
-      module: m1
 
   PostBuild:
     needs: Build
