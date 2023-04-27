@@ -1,2 +1,2 @@
 
-echo m1 cdRelease.sh
+echo cdRelease.sh

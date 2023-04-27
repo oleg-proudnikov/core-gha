@@ -1,2 +1,2 @@
 
-echo m1 cdBuild.sh
+echo cdBuild.sh

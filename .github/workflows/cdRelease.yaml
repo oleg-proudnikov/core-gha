@@ -4,21 +4,19 @@
 # Reusable cdRelease
 #
 
-name: Reusable cdRelease
+name: cdRelease
 
 on:
   workflow_call:
     inputs:
-      module:
-        required: false
-        type: string
-jobs:
+      module: { type: string, required: false }
 
+jobs:
   cdRelease:
     if: contains(fromJSON('["main", "master"]'), github.ref_name)
     runs-on: ubuntu-latest
     timeout-minutes: 5
-    
+
     steps:
       # Check-out repo under $GITHUB_WORKSPACE.
       - uses: actions/checkout@v3
@@ -33,12 +31,10 @@ jobs:
         if: "${{ inputs.module == '' && github.workflow != '' }}"
         run: ./${{ github.workflow }}/cd-scripts/cdRelease.sh
 
-      # Status
-      - name: Success
-        if: ${{ success() }}
-        run: echo "### Success! :star:" >> $GITHUB_STEP_SUMMARY
-
-      # Status
-      - name: Error
+      # Dump contexts
+      - name: Dump GitHub context
         if: ${{ !success() }}
-        run: echo "### Error! :boom:" >> $GITHUB_STEP_SUMMARY
+        run: echo "${{ toJson(github) }}"
+      - name: Dump runner context
+        if: ${{ !success() }}
+        run: echo "${{ toJson(runner) }}"
