@@ -16,14 +16,9 @@ on:
   workflow_dispatch:
 
 env:
-  KEY: some-key
+  key: some-key
 
 jobs:
-
-  env:
-    VERSION: ${{ github.sha }}
-    USER: ${{ secrets.USER }}
-    PAT: ${{ secrets.PAT }}
 
   Build:
     uses: ./.github/workflows/cdBuild.yaml
@@ -35,10 +30,15 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
 
+    env:
+      VERSION: ${{ github.sha }}
+      USER: ${{ secrets.USER }}
+      PAT: ${{ secrets.PAT }}
+
     steps:
       - name: Show env
         run: |
-          echo "${{ env.KEY }}"
+          echo "${{ env.key }}"
           echo "${{ env.USER }}"
           echo "${{ env.PAT }}"
 
@@ -58,7 +58,7 @@ jobs:
     steps:
       - name: Show env
         run: |
-          echo "${{ env.KEY }}"
+          echo "${{ env.key }}"
           echo "${{ env.USER }}"
           echo "${{ env.PAT }}"
 
