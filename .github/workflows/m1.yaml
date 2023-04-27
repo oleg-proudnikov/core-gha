@@ -1,17 +1,17 @@
 # 
 # GitHub Actions workflow.
 #
-# m2 build.-release
+# m1 build.-release
 #
 
-name: m2 build-release
+name: m1 build-release
 
 on:
   push:
     branches: 
       - '**'
     paths:
-      - 'm2/**'
+      - 'm1/**'
       - .github/workflows/m1*
   workflow_dispatch:
 

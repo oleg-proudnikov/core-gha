@@ -15,9 +15,6 @@ on:
       - .github/workflows/m2*
   workflow_dispatch:
 
-env:
-  KEY: some-key
-
 jobs:
 
   Build:
