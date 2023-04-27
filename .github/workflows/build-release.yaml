@@ -48,5 +48,5 @@ jobs:
 
       # cdRelease
       - name: cdRelease
-        if: ${{ success() && (endsWith(github.ref, 'ref/head/main') || endsWith(github.ref, 'ref/head/master')) }}
+        if: ${{ success() && contains(fromJSON('["refs/heads/main", "refs/heads/master"]'), github.ref) }}
         run: ./${{ inputs.module }}/cd-scripts/cdRelease.sh
