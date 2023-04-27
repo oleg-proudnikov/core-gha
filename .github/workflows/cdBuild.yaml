@@ -14,7 +14,7 @@ on:
         type: string
 jobs:
 
-  reusable-cdBuild:
+  cdBuild:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     
