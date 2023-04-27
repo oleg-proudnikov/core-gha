@@ -17,7 +17,11 @@ on:
 
 jobs:
 
+  cdBuild:
+    - uses: ./.github/workflows/cdBuild.yaml
+
   cdRelease:
+    meeds: cdBuild
     runs-on: ubuntu-latest
     timeout-minutes: 5
 
@@ -27,12 +31,8 @@ jobs:
       PAT: ${{ secrets.PAT }}
 
     steps:
-
       # Check-out repo under $GITHUB_WORKSPACE.
       - uses: actions/checkout@v3
-
-      # cdBuild
-      - uses: ./.github/workflows/cdBuild.yaml
 
       # cdRelease
       - name: cdRelease
