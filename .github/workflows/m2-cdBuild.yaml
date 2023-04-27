@@ -1,0 +1,35 @@
+# 
+# GitHub Actions workflow.
+#
+# m2 cdBuild
+#
+
+name: m2 cdBuild
+
+on:
+  push:
+    branches: 
+      - '**'
+    paths:
+      - 'm2/**'
+  workflow_dispatch:
+
+jobs:
+
+  cdBuild:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    
+    env:
+      VERSION: ${{ github.sha }}
+      USER: ${{ secrets.USER }}
+      PAT: ${{ secrets.PAT }}
+
+    steps:
+      
+      # Check-out repo under $GITHUB_WORKSPACE.
+      - uses: actions/checkout@v2
+
+      # cdBuild
+      - name: cdBuild
+        run: ./m2/cd-scripts/cdBuild.sh

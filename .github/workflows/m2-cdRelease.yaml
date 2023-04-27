@@ -1,0 +1,35 @@
+# 
+# GitHub Actions workflow.
+#
+# m2 cdRelease.
+#
+
+name: m2 cdRelease
+
+on:
+  push:
+    branches: 
+      - main
+    paths:
+      - 'm2/**'
+  workflow_dispatch:
+
+jobs:
+
+  cdBuild:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    
+    env:
+      VERSION: ${{ github.sha }}
+      USER: ${{ secrets.USER }}
+      PAT: ${{ secrets.PAT }}
+
+    steps:
+      
+      # Check-out repo under $GITHUB_WORKSPACE.
+      - uses: ./.github/workflows/m2-cdBuild.yaml
+
+      # cdRelease
+      - name: cdRelease
+        run: ./m2/cd-scripts/cdRelease.sh
