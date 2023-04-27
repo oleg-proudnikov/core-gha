@@ -29,6 +29,6 @@ jobs:
         run: ./${{ inputs.module }}/cd-scripts/cdBuild.sh
 
       # cdBuild via workflow
-      - name: cdBuild with module defined by github.workflow
+      - name: cdBuild with github.workflow module
         if: "${{ inputs.module == '' && github.workflow != '' }}"
         run: ./${{ github.workflow }}/cd-scripts/cdBuild.sh
