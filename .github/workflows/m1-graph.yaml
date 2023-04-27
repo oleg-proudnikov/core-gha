@@ -4,7 +4,7 @@
 # m1 build.-release
 #
 
-name: m1 build-release
+name: m1 build-release (graph)
 
 on:
   push:

@@ -12,7 +12,7 @@ on:
       - '**'
     paths:
       - 'm1/**'
-      - .github/workflows/m1.yaml
+      - .github/workflows/m1*
       - .github/workflows/build-release.yaml
   workflow_dispatch:
 
