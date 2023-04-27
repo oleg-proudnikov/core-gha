@@ -1,3 +1,3 @@
 
 echo m1 cdBuild.sh
-echo branch-1
+exit 1
