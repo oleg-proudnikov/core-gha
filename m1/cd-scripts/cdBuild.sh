@@ -1,2 +1,2 @@
 
-echo Output from m1 cdBuild.sh
+echo Output from m1 cdBuild.sh !!!

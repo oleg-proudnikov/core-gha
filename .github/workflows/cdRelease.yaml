@@ -39,10 +39,10 @@ jobs:
 
       # Status
       - name: Success
-        if: success()
+        if: ${{ success() }}
         run: echo "### Success! :star:" >> $GITHUB_STEP_SUMMARY
 
       # Status
       - name: Error
-        if: !success()
+        if: ${{ !success() }}
         run: echo "### Error! :boom:" >> $GITHUB_STEP_SUMMARY
