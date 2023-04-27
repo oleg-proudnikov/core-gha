@@ -12,11 +12,12 @@ on:
       - main
     paths:
       - 'm1/**'
+      - .github/workflows/m1*
   workflow_dispatch:
 
 jobs:
 
-  cdBuild:
+  cdRelease:
     runs-on: ubuntu-latest
     timeout-minutes: 5
 
@@ -27,12 +28,8 @@ jobs:
 
     steps:
 
-      # Check-out repo under $GITHUB_WORKSPACE.
-      - uses: actions/checkout@v3
-
       # cdBuild
-      - name: cdBuild
-        run: ./m1/cd-scripts/cdBuild.sh
+      - uses: .github/workflows/cdBuild.yaml@main
 
       # cdRelease
       - name: cdRelease
