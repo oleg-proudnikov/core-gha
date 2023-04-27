@@ -1,10 +1,10 @@
 # 
 # GitHub Actions workflow.
 #
-# Reusable cdBuild
+# Reusable build-release pipeline
 #
 
-name: Reusable cdBuild
+name: Reusable build-release
 
 on:
   workflow_call:
@@ -14,7 +14,7 @@ on:
         type: string
 jobs:
 
-  cdBuild:
+  build-release:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     
@@ -28,11 +28,25 @@ jobs:
       # Check-out repo under $GITHUB_WORKSPACE.
       - uses: actions/checkout@v3
 
-      - run: |
-          echo "${{ env.KEY }}"
+      - name: env
+        run: |
+          echo "${{ env.VERSION }}"
           echo "${{ env.USER }}"
           echo "${{ env.PAT }}"
+
+      - name: GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: echo "$GITHUB_CONTEXT"
+
+      - name: GitHub context again
+        run: echo "${{ toJson(github) }}"
 
       # cdBuild
       - name: cdBuild
         run: ./${{ inputs.module }}/cd-scripts/cdBuild.sh
+
+      # cdRelease
+      - name: cdRelease
+        if: success()
+        run: ./${{ inputs.module }}/cd-scripts/cdRelease.sh

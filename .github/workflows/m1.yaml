@@ -1,0 +1,24 @@
+# 
+# GitHub Actions workflow.
+#
+# m1 pipeline
+#
+
+name: m1 build-release
+
+on:
+  push:
+    branches: 
+      - '**'
+      - '!main'
+    paths:
+      - 'm1/**'
+      - .github/workflows/m1.yaml
+  workflow_dispatch:
+
+jobs:
+
+  Build:
+    uses: ./.github/workflows/build-release.yaml
+    with:
+      module: m1

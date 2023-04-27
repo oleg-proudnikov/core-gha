@@ -1,3 +1,5 @@
 Running a workflow from command line
 https://docs.github.com/en/actions/managing-workflow-runs/manually-running-a-workflow
 
+Sample action
+https://github.com/tj-actions/branch-names
