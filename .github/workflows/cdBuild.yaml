@@ -33,6 +33,11 @@ jobs:
           echo "${{ env.USER }}"
           echo "${{ env.PAT }}"
 
+      - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: echo "$GITHUB_CONTEXT"
+
       # cdBuild
       - name: cdBuild
         run: ./${{ inputs.module }}/cd-scripts/cdBuild.sh

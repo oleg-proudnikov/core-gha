@@ -16,22 +16,9 @@ on:
       - .github/workflows/m1*
   workflow_dispatch:
 
-env:
-  KEY: some-key
-  VERSION: ${{ github.sha }}
-  USER: ${{ secrets.USER }}
-  PAT: ${{ secrets.PAT }}
-
 jobs:
 
   Build:
     uses: ./.github/workflows/cdBuild.yaml
     with:
       module: m1
-
-    steps:
-
-      - run: |
-          echo "${{ env.KEY }}"
-          echo "${{ env.USER }}"
-          echo "${{ env.PAT }}"
