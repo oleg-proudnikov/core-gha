@@ -26,6 +26,7 @@ jobs:
       module: m1
 
   Release:
+    needs: Build
     uses: ./.github/workflows/cdRelease.yaml
     with:
       module: m1
