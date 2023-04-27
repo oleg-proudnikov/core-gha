@@ -1,2 +1,2 @@
 
-echo m1 cdRelease.sh aaaaaaaa
+echo m1 cdRelease.sh

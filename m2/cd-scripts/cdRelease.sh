@@ -1,2 +1,2 @@
 
-echo m2 cdRelease.sh  22222
+echo m2 cdRelease.sh
