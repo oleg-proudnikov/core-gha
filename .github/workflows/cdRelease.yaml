@@ -23,6 +23,10 @@ jobs:
       # Check-out repo under $GITHUB_WORKSPACE.
       - uses: actions/checkout@v3
 
+      # Show github context
+      - name: Show github context
+        run: echo ${{ toJSON(github) }}
+
       # cdRelease via input
       - name: cdRelease with input module
         if: "${{ inputs.module != '' }}"
