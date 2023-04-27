@@ -1,10 +1,10 @@
 # 
 # GitHub Actions workflow.
 #
-# m1 cdRelease.
+# m1 build.-release
 #
 
-name: m1 cdRelease
+name: m1 build-release
 
 on:
   push:
@@ -27,6 +27,7 @@ jobs:
 
   Release:
     needs: Build
+    if: contains(fromJSON('["main", "master"]'), github.ref_name)
     uses: ./.github/workflows/cdRelease.yaml
     with:
       module: m1
