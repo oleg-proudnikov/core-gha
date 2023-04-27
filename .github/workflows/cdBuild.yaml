@@ -21,7 +21,8 @@ jobs:
     steps:
       # Check-out repo under $GITHUB_WORKSPACE.
       - uses: actions/checkout@v3
+        name: Checkout
 
       # cdBuild
-      - name: cdBuild
-        run: ./${{ inputs.module }}/cd-scripts/cdBuild.sh
+      - name: cdBuild with github.workflow
+        run: ./${{ github.workflow }}/cd-scripts/cdBuild.sh
