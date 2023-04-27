@@ -36,3 +36,13 @@ jobs:
       - name: cdRelease with github.workflow module
         if: "${{ inputs.module == '' && github.workflow != '' }}"
         run: ./${{ github.workflow }}/cd-scripts/cdRelease.sh
+
+      # Status
+      - name: Success
+        if: success()
+        run: echo "### Success! :star:" >> $GITHUB_STEP_SUMMARY
+
+      # Status
+      - name: Error
+        if: !success()
+        run: echo "### Error! :boom:" >> $GITHUB_STEP_SUMMARY
