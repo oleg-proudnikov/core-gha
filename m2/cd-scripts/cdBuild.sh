@@ -1,3 +1,3 @@
 
-echo m2 cdBuild.sh
+echo cdBuild.sh
 
