@@ -1,10 +1,10 @@
 # 
 # GitHub Actions workflow.
 #
-# Reusable cdBuild
+# Reusable cdRelease
 #
 
-name: Reusable cdBuild
+name: Reusable cdRelease
 
 on:
   workflow_call:
@@ -14,7 +14,7 @@ on:
         type: string
 jobs:
 
-  cdBuild:
+  cdRelease:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     
@@ -33,6 +33,6 @@ jobs:
           echo "${{ env.USER }}"
           echo "${{ env.PAT }}"
 
-      # cdBuild
-      - name: cdBuild
-        run: ./${{ inputs.module }}/cd-scripts/cdBuild.sh
+      # cdRelease
+      - name: cdRelease
+        run: ./${{ inputs.module }}/cd-scripts/cdRelease.sh

@@ -16,22 +16,12 @@ on:
       - .github/workflows/m1*
   workflow_dispatch:
 
+env:
+  KEY: some-key
+
 jobs:
 
-  cdBuild:
-    runs-on: ubuntu-latest
-    timeout-minutes: 5
-    
-    env:
-      VERSION: ${{ github.sha }}
-      USER: ${{ secrets.USER }}
-      PAT: ${{ secrets.PAT }}
-
-    steps:
-      
-      # Check-out repo under $GITHUB_WORKSPACE.
-      - uses: actions/checkout@v3
-
-      # cdBuild
-      - name: cdBuild
-        run: ./m1/cd-scripts/cdBuild.sh
+  Build:
+    uses: ./.github/workflows/cdBuild.yaml
+    with:
+      module: m1
