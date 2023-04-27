@@ -1,18 +1,18 @@
 # 
 # GitHub Actions workflow.
 #
-# m1 build.-release
+# m2 build.-release
 #
 
-name: m1 build-release (graph)
+name: m2 build-release
 
 on:
   push:
     branches: 
       - '**'
     paths:
-      - 'm1/**'
-      - .github/workflows/m1*
+      - 'm2/**'
+      - .github/workflows/m2*
   workflow_dispatch:
 
 env:
@@ -23,11 +23,11 @@ jobs:
   Build:
     uses: ./.github/workflows/cdBuild.yaml
     with:
-      module: m1
+      module: m2
 
   Release:
     needs: Build
     if: contains(fromJSON('["main", "master"]'), github.ref_name)
     uses: ./.github/workflows/cdRelease.yaml
     with:
-      module: m1
+      module: m2
