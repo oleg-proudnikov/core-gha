@@ -18,6 +18,9 @@ on:
 
 env:
   KEY: some-key
+  VERSION: ${{ github.sha }}
+  USER: ${{ secrets.USER }}
+  PAT: ${{ secrets.PAT }}
 
 jobs:
 
@@ -25,3 +28,10 @@ jobs:
     uses: ./.github/workflows/cdBuild.yaml
     with:
       module: m1
+
+    steps:
+
+      - run: |
+          echo "${{ env.KEY }}"
+          echo "${{ env.USER }}"
+          echo "${{ env.PAT }}"
