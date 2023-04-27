@@ -4,7 +4,7 @@
 # m1 build.-release
 #
 
-name: m1 build-release
+name: m1
 
 on:
   push:
@@ -20,10 +20,28 @@ env:
 
 jobs:
 
+  env:
+    VERSION: ${{ github.sha }}
+    USER: ${{ secrets.USER }}
+    PAT: ${{ secrets.PAT }}
+
   Build:
     uses: ./.github/workflows/cdBuild.yaml
     with:
       module: m1
+
+  PostBuild:
+    needs: Build
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Show env
+        run: |
+          echo "${{ env.KEY }}"
+          echo "${{ env.USER }}"
+          echo "${{ env.PAT }}"
+
 
   Release:
     needs: Build
@@ -31,3 +49,16 @@ jobs:
     uses: ./.github/workflows/cdRelease.yaml
     with:
       module: m1
+
+  PostRelease:
+    needs: Release
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Show env
+        run: |
+          echo "${{ env.KEY }}"
+          echo "${{ env.USER }}"
+          echo "${{ env.PAT }}"
+

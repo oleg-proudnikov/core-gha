@@ -1,10 +1,10 @@
 # 
 # GitHub Actions workflow.
 #
-# m2 build.-release
+# m2 build-release
 #
 
-name: m2 build-release
+name: m2
 
 on:
   push:
