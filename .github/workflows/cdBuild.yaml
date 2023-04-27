@@ -10,6 +10,8 @@ on:
   workflow_call:
     inputs:
       module: { type: string, required: false }
+      runtime: { type: string, required: false }
+      version: { type: string, required: false }
 
 jobs:
   cdBuild:
@@ -20,6 +22,13 @@ jobs:
       # Check-out repo under $GITHUB_WORKSPACE.
       - uses: actions/checkout@v3
         name: Checkout
+
+      # Go 1.19
+      - name: Set up Go
+        if: "${{ inputs.runtime == 'go' && inputs.version != '' }}"
+        uses: actions/setup-go@v3
+        with:
+          go-version: ${{ inputs.version }}
 
       # cdBuild via input
       - name: cdBuild with input module
