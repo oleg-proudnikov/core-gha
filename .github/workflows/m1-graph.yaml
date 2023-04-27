@@ -28,6 +28,6 @@ jobs:
   Release:
     needs: Build
     if: contains(fromJSON('["main", "master"]'), github.ref_name)
-    uses: ./.github/workflowsc/dRelease.yaml
+    uses: ./.github/workflows/cdRelease.yaml
     with:
       module: m1
