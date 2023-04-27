@@ -1,5 +1,11 @@
 Running a workflow from command line
 https://docs.github.com/en/actions/managing-workflow-runs/manually-running-a-workflow
 
+Expressions
+https://docs.github.com/en/actions/learn-github-actions/expressions
+
+Contexts
+https://docs.github.com/en/actions/learn-github-actions/contexts#contains
+
 Sample action
 https://github.com/tj-actions/branch-names
