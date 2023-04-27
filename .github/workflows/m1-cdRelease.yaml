@@ -19,6 +19,8 @@ jobs:
 
   cdBuild:
     uses: ./.github/workflows/cdBuild.yaml
+    with:
+      module: m1
 
   cdRelease:
     needs: cdBuild

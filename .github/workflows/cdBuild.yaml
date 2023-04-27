@@ -8,7 +8,10 @@ name: Reusable cdBuild
 
 on:
   workflow_call:
-
+    inputs:
+      module:
+        required: true
+        type: string
 jobs:
 
   reusable-cdBuild:
@@ -27,4 +30,4 @@ jobs:
 
       # cdBuild
       - name: cdBuild
-        run: ./m1/cd-scripts/cdBuild.sh
+        run: ./${{ inputs.module }}/cd-scripts/cdBuild.sh
