@@ -13,12 +13,12 @@ on:
     paths:
       - 'm1/**'
       - .github/workflows/m1*
-      - .github/workflows/shared/build-release.yaml
+      - .github/workflowsbuild-release.yaml
   workflow_dispatch:
 
 jobs:
 
   Build:
-    uses: ./.github/workflows/shared/build-release.yaml
+    uses: ./.github/workflowsbuild-release.yaml
     with:
       module: m1

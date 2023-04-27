@@ -21,13 +21,13 @@ env:
 jobs:
 
   Build:
-    uses: ./.github/workflows/shared/cdBuild.yaml
+    uses: ./.github/workflowscdBuild.yaml
     with:
       module: m1
 
   Release:
     needs: Build
     if: contains(fromJSON('["main", "master"]'), github.ref_name)
-    uses: ./.github/workflows/shared/cdRelease.yaml
+    uses: ./.github/workflowscdRelease.yaml
     with:
       module: m1
