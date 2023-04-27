@@ -43,6 +43,7 @@ jobs:
 
   Release:
     needs: Build
+    if: contains(fromJSON('["main", "master"]'), github.ref_name)
     uses: ./.github/workflows/cdRelease.yaml
 
   PostRelease:
