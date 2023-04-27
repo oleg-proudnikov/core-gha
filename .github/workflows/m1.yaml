@@ -4,7 +4,7 @@
 # m1 build.-release
 #
 
-name: m11
+name: m1
 
 on:
   push:
@@ -43,10 +43,7 @@ jobs:
 
   Release:
     needs: Build
-    if: contains(fromJSON('["main", "master"]'), github.ref_name)
     uses: ./.github/workflows/cdRelease.yaml
-    with:
-      module: m1
 
   PostRelease:
     needs: Release

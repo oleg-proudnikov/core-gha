@@ -10,29 +10,25 @@ on:
   workflow_call:
     inputs:
       module:
-        required: true
+        required: false
         type: string
 jobs:
 
   cdRelease:
+    if: contains(fromJSON('["main", "master"]'), github.ref_name)
     runs-on: ubuntu-latest
     timeout-minutes: 5
     
-    env:
-      VERSION: ${{ github.sha }}
-      USER: ${{ secrets.USER }}
-      PAT: ${{ secrets.PAT }}
-
     steps:
-      
       # Check-out repo under $GITHUB_WORKSPACE.
       - uses: actions/checkout@v3
 
-      - run: |
-          echo "${{ env.KEY }}"
-          echo "${{ env.USER }}"
-          echo "${{ env.PAT }}"
-
-      # cdRelease
-      - name: cdRelease
+      # cdRelease via input
+      - name: cdRelease with input module
+        if: "${{ inputs.module != '' }}"
         run: ./${{ inputs.module }}/cd-scripts/cdRelease.sh
+
+      # cdRelease via workflow
+      - name: cdRelease with github.workflow module
+        if: "${{ inputs.module == '' && github.workflow != '' }}"
+        run: ./${{ github.workflow }}/cd-scripts/cdRelease.sh
