@@ -10,6 +10,7 @@ on:
   push:
     branches: 
       - '**'
+      - '!main'
     paths:
       - 'm1/**'
   workflow_dispatch:
