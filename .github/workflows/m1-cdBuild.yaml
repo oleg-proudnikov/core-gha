@@ -13,6 +13,7 @@ on:
       - '!main'
     paths:
       - 'm1/**'
+      - .github/workflows/m1*
   workflow_dispatch:
 
 jobs:
