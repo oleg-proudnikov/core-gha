@@ -10,6 +10,7 @@ on:
   workflow_call:
     inputs:
       module: { type: string, required: false }
+      runner: { type: string, required: false }
 
 jobs:
   cdRelease:
