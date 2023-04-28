@@ -1,4 +1,4 @@
 
 echo cdBuild.sh
 
-go
+go version
