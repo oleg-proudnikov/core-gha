@@ -23,6 +23,7 @@ jobs:
   Build:
     uses: ./.github/workflows/cdBuild.yaml
     with:
+      runner: small
       go: 1.18
 
   Release:
