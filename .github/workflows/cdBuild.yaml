@@ -10,6 +10,7 @@ on:
   workflow_call:
     inputs:
       module: { type: string, required: false }
+      runner: { type: string, required: false }
       go: { type: string, required: false }
       java: { type: string, required: false }
       python: { type: string, required: false }
