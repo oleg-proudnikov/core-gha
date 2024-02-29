@@ -1,0 +1,32 @@
+# 
+# GitHub Actions workflow.
+#
+# m1 build.-release
+#
+
+name: m1-pipeline
+
+on:
+  push:
+    branches: 
+      - '**'
+    paths:
+      - 'm1/**'
+      - .github/workflows/m1*
+  workflow_dispatch:
+
+env:
+  key: some-key
+
+jobs:
+
+  Build:
+    uses: ./.github/workflows/cdBuild.yaml
+    with:
+      runner: small
+      go: 1.18
+
+  Release:
+    needs: Build
+    uses: ./.github/workflows/cdRelease.yaml
+
